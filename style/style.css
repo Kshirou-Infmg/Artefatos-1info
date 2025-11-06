@@ -1,0 +1,163 @@
+@font-face{
+    font-family: Margarine;
+    src: url(../fonts/Margarine-Regular.ttf);
+}
+@font-face {
+    font-family: Quicksand;
+    src: url(../fonts/Quicksand-Medium.ttf);
+}
+
+body{
+    margin: 0;
+    font-family: Quicksand, sans-serif;
+    background-color: rgb(226, 200, 160);
+}
+
+.header{
+    background-color: rgb(54, 82, 42);
+    color: white;
+    font-family: Margarine, 'Times New Roman';
+}
+
+.header h1, .header h4{
+    text-align: center;
+    margin: 0;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+}
+.header h4 {
+    font-size: 1rem;
+    font-family: Quicksand, sans-serif;
+    font-weight: 300;
+}
+
+#headerImg{
+    width: 100%;
+    /* Imagem de capa como um banner de altura fixa */
+    height: 250px; 
+    object-fit: cover;
+    display: block;
+}
+
+/* --- ESTILOS DOS BOTÕES "SANFONA" (ACORDEÃO) --- */
+
+.toggle-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background-color: rgb(54, 82, 42);
+    color: white;
+    font-family: Margarine, sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-top: 1px solid rgb(226, 200, 160);
+}
+
+.paragrafos-container {
+    padding-top: 20px;
+}
+
+/* --- ESTILOS DO MENU SUSPENSO (DROPDOWN) --- */
+
+#menuButton{
+    border: none;
+    padding: 0.5em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    background-color: transparent;
+    z-index: 2; /* Garante que o botão esteja acima do dropdown */
+}
+
+#menuIcon{
+    /* Ícone branco para ser visível no fundo verde */
+    filter: brightness(0%) invert(100%);
+    width: 1.5rem;
+}
+
+.header-content {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.header-text {
+    flex-grow: 1;
+    /* Move o H1/H4 para o centro, compensando o botão */
+    padding-right: 50px; 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 10px;
+    top: 60px;  /* Posição abaixo do botão de menu */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: Quicksand, sans-serif;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Classe .show é adicionada pelo JavaScript */
+.dropdown-content.show {
+    display: block;
+}
+
+/* --- ESTILOS DO CONTEÚDO "SANFONA" (PARÁGRAFOS) --- */
+
+.paragrafos-container .content {
+    max-height: 0; /* Começa fechado */
+    overflow: hidden;
+    padding: 0 15px; /* Padding horizontal */
+    background-color: rgb(245, 232, 211);
+    transition: max-height 0.2s ease-out;
+}
+
+.paragrafos-container .content p {
+    margin: 0;
+}
+
+/* Classe .active é adicionada pelo JavaScript */
+.paragrafos-container .content.active {
+    /* CORREÇÃO: Aumentado para 1500px para caber imagem + texto */
+    max-height: 1500px; 
+    padding: 15px;
+    transition: max-height 0.3s ease-in;
+}
+
+/* Estilo para as imagens dentro dos parágrafos */
+.content-img {
+    max-width: 100%; 
+    height: auto;
+
+    /* CORREÇÃO: Limita a altura da imagem para não cortar o texto */
+    max-height: 400px;
+    object-fit: cover; /* Evita distorção da imagem */
+
+    display: block;  
+    margin: 15px auto; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
