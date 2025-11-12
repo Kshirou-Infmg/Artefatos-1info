@@ -214,4 +214,83 @@ body{
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 0;
+
+}
+/* --- TRANSIÇÕES SUAVES --- */
+body,
+.header,
+.toggle-btn,
+.paragrafos-container .content,
+.dropdown-content,
+.dropdown-content a,
+.poem-card {
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* --- DARK MODE --- */
+body.dark-mode {
+    background-color: #1c1f1a; /* Verde bem escuro, quase preto */
+    color: #e0e0d0;
+}
+
+/* Cabeçalho */
+body.dark-mode .header {
+    background-color: #2e402c; /* Verde oliva escuro */
+    color: #f0f0e0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Botões sanfona */
+body.dark-mode .toggle-btn {
+    background-color: #3a5238; /* Verde musgo */
+    color: #f0f0e0;
+    border-top: 1px solid #4a5a44;
+}
+body.dark-mode .toggle-btn:hover {
+    background-color: #4a6a48; /* Verde mais vivo no hover */
+}
+
+/* Conteúdo dos parágrafos */
+body.dark-mode .paragrafos-container .content {
+    background-color: #2a2f26; /* Verde acinzentado escuro */
+    color: #e0e0d0;
+    border-left: 3px solid #4a6a48; /* detalhe em verde como marcador */
+}
+
+/* Menu suspenso */
+body.dark-mode .dropdown-content {
+    background-color: #2f3a2e;
+    border: 1px solid #4a5a44;
+}
+body.dark-mode .dropdown-content a {
+    color: #f0f0e0;
+}
+body.dark-mode .dropdown-content a:hover {
+    background-color: #3f4f3e;
+}
+
+/* Grid de imagens */
+body.dark-mode .image-grid .content-img {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    border: 2px solid #3a5238; /* detalhe verde nas bordas */
+}
+
+/* Grid de vídeos */
+body.dark-mode .video-grid video {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    border: 2px solid #3a5238;
+}
+
+/* Cartões de poemas */
+body.dark-mode .poem-card {
+    background-color: #2a2f26; /* fundo escuro estilo papel antigo */
+    color: #e0e0d0;
+    border: 1px solid #4a6a48;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+body.dark-mode .poem-card h3 {
+    color: #9fcf9f; /* verde claro para títulos */
+}
+body.dark-mode .poem-card pre {
+    color: #d8e8d8; /* texto em tom suave */
 }
