@@ -45,60 +45,78 @@ body{
 
 .toggle-btn {
     width: 100%;
-    padding: 15px;
-    border: none;
     background-color: rgb(54, 82, 42);
     color: white;
-    font-family: Margarine, sans-serif;
-    font-size: 1.2rem;
     cursor: pointer;
-    border-top: 1px solid rgb(226, 200, 160);
-}
-
-.paragrafos-container {
-    padding-top: 20px;
-}
-
-/* --- ESTILOS DO MENU SUSPENSO (DROPDOWN) --- */
-
-#menuButton{
+    padding: 18px;
+    text-align: left;
     border: none;
-    padding: 0.5em;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
-    background-color: transparent;
-    z-index: 2; /* Garante que o botão esteja acima do dropdown */
+    outline: none;
+    transition: background-color 0.4s ease;
+    font-family: Margarine, 'Times New Roman';
+    font-size: 1.2rem;
 }
 
-#menuIcon{
-    /* Ícone branco para ser visível no fundo verde */
-    filter: brightness(0%) invert(100%);
-    width: 1.5rem;
+.paragrafos-container .content.active + .toggle-btn,
+.toggle-btn:hover {
+    background-color: rgb(70, 107, 55);
 }
+
+.paragrafos-container .content {
+    /* Corrigido para div, com max-height maior para comportar o grid */
+    max-height: 0; /* Começa fechado */
+    overflow: hidden;
+    padding: 0 15px; /* Padding horizontal */
+    background-color: rgb(245, 232, 211);
+    transition: max-height 0.2s ease-out;
+}
+
+.paragrafos-container .content * {
+    margin: 10px 0; /* Espaçamento interno padrão para o conteúdo */
+}
+
+/* Classe .active é adicionada pelo JavaScript */
+.paragrafos-container .content.active {
+    /* Altura muito grande para comportar todo o conteúdo (inclusive o grid) */
+    max-height: 3000px; 
+    padding: 15px; /* Padding vertical e horizontal quando aberto */
+}
+
+/* Estilo para imagens dentro do conteúdo que não são do grid */
+.content-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* --- ESTILOS DO MENU SUSPENSO --- */
 
 .header-content {
-    position: relative; 
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    gap: 10px;
+    padding: 10px 20px;
+    position: relative;
 }
 
-.header-text {
-    flex-grow: 1;
-    /* Move o H1/H4 para o centro, compensando o botão */
-    padding-right: 50px; 
+#menuButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+#menuIcon {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease-in;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -125,39 +143,75 @@ body{
     display: block;
 }
 
-/* --- ESTILOS DO CONTEÚDO "SANFONA" (PARÁGRAFOS) --- */
+/* --- ESTILOS DE GRADE (GRID) --- */
 
-.paragrafos-container .content {
-    max-height: 0; /* Começa fechado */
-    overflow: hidden;
-    padding: 0 15px; /* Padding horizontal */
-    background-color: rgb(245, 232, 211);
-    transition: max-height 0.2s ease-out;
+/* GRADE DE IMAGENS */
+.image-grid {
+    display: grid;
+    /* Colunas responsivas, AGORA COM TAMANHO MÍNIMO MAIOR (250px) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 15px; /* Espaço entre as imagens */
+    padding: 15px 0; /* Espaçamento interno */
 }
 
-.paragrafos-container .content p {
-    margin: 0;
+.image-grid .content-img {
+    width: 100%;
+    /* Altura fixa AUMENTADA para 250px */
+    height: 250px; 
+    object-fit: cover; /* Recorta a imagem para preencher o espaço */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-/* Classe .active é adicionada pelo JavaScript */
-.paragrafos-container .content.active {
-    /* CORREÇÃO: Aumentado para 1500px para caber imagem + texto */
-    max-height: 1500px; 
-    padding: 15px;
-    transition: max-height 0.3s ease-in;
+.image-grid .content-img:hover {
+    transform: scale(1.05);
 }
 
-/* Estilo para as imagens dentro dos parágrafos */
-.content-img {
-    max-width: 100%; 
+/* GRADE DE VÍDEOS */
+.video-grid {
+    display: grid;
+    /* Colunas responsivas para vídeos: itens de no mínimo 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px; /* Espaço entre os vídeos */
+    padding: 20px 0;
+}
+
+.video-grid video {
+    width: 100%;
     height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    /* CORREÇÃO: Limita a altura da imagem para não cortar o texto */
-    max-height: 400px;
-    object-fit: cover; /* Evita distorção da imagem */
+/* GRADE DE POEMAS */
+.poem-grid {
+    display: grid;
+    /* Colunas responsivas, AGORA COM TAMANHO MÍNIMO MAIOR (300px) */
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
 
-    display: block;  
-    margin: 15px auto; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+.poem-card {
+    background-color: #ffffff; /* Fundo branco para destaque */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.poem-card h3 {
+    font-family: Margarine, 'Times New Roman';
+    color: rgb(54, 82, 42);
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.poem-card pre {
+    /* Preserva quebras de linha no HTML (necessário já que os poemas usam <br>) */
+    white-space: pre-wrap; 
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
 }
