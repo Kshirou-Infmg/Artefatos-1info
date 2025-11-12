@@ -296,41 +296,46 @@ body.dark-mode .poem-card pre {
 }
 
 /*apartir daqui é tst, se ficar daora eu deixo kk*/
-/* Botão no modo claro */
 .dark-mode-btn {
-    margin-left: auto;
-    padding: 0.6em 1.2em;
-    font-family: Quicksand, sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #4a6a48, #6fa96f); /* verde médio → verde claro */
-    color: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  margin-left: auto;
+  padding: 0.6em 1.2em;
+  font-family: Quicksand, sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4a6a48, #6fa96f); /* verde médio → verde claro */
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+/* Hover no modo claro */
 .dark-mode-btn:hover {
-    background: linear-gradient(135deg, #6fa96f, #8fcf8f); /* verde mais vivo no hover */
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #6fa96f, #8fcf8f);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
+/* Clique */
 .dark-mode-btn:active {
-    transform: scale(0.97);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-}
-/* Botão no modo escuro */
-body.dark-mode .dark-mode-btn {
-    background: linear-gradient(135deg, #3a5238, #4a6a48); /* verde musgo */
-    color: #f0f0e0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transform: scale(0.97);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
 }
 
+/* Estilo no modo escuro */
+body.dark-mode .dark-mode-btn {
+  background: linear-gradient(135deg, #3a5238, #4a6a48); /* verde musgo → oliva */
+  color: #f0f0e0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+/* Hover no modo escuro */
 body.dark-mode .dark-mode-btn:hover {
-    background: linear-gradient(135deg, #4a6a48, #5a7a58);
+  background: linear-gradient(135deg, #4a6a48, #5a7a58);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
 }
