@@ -32,4 +32,26 @@ window.onclick = function(event) {
             }
         }
     }
+
 }
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+
+    // Salva a preferência no localStorage
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('modo', 'escuro');
+        document.getElementById('darkModeToggle').textContent = '☀ Modo Claro';
+    } else {
+        localStorage.setItem('modo', 'claro');
+        document.getElementById('darkModeToggle').textContent = '🌙 Modo Escuro';
+    }
+}
+
+// Aplica o modo salvo ao carregar a página
+window.addEventListener('DOMContentLoaded', () => {
+    const modoSalvo = localStorage.getItem('modo');
+    if (modoSalvo === 'escuro') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('darkModeToggle').textContent = '☀ Modo Claro';
+    }
+});
